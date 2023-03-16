@@ -1,0 +1,78 @@
+-- Operators and Functions
+
+select film_id, rental_rate as old_rental_rate,
+Round(rental_rate*1.1,2) as new_rental_rate
+from film
+
+Select film_id,
+Round(rental_rate/replacement_cost*100,2) as percentage
+from film
+Where Round(rental_rate/replacement_cost*100,2) <4
+Order by 2 ASC
+
+
+-- Case Statement
+
+select * from flights
+Select
+actual_departure-scheduled_departure, 
+case
+when actual_departure is null then 'no departure time'
+when actual_departure-scheduled_departure < '00:05' then 'on time'
+else 'late'
+end
+from flights
+select * from bookings
+select * from ticket_flights
+
+select
+count(*),
+case
+when total_amount < 20000 then 'Low price ticket'
+when total_amount < 150000 then  'Mid price ticket'
+else 'High Price Ticket'
+end as ticket_price
+from bookings  
+group by ticket_price
+
+select 
+count(*),
+case
+when extract (month from scheduled_departure) in (12,1,2) then 'Winter'
+when extract (month from scheduled_departure) <= 5 then 'spring'
+when extract (month from scheduled_departure) <=8 then 'Summer'
+else 'fall'
+end  as flights_departured
+from flights
+group by flights_departured
+
+
+select 
+count(*),
+case
+when extract (month from scheduled_departure) in (12,1,2) then 'Winter'
+when extract (month from scheduled_departure) <= 5 then 'spring'
+when extract (month from scheduled_departure) <=8 then 'Summer'
+else 'fall'
+end  as flights_departured
+from flights
+
+-- Case Statement 
+select * from film
+
+select
+title,
+case 
+when rating ='PG' or rating = 'PG-13' or length > '120' then 'Great rating'
+when description like  '%Drama%' and length > '90' then 'long drama'
+when description like  '%Drama%' and length < '90' then 'short drama'
+when rental_rate < 1 then 'very cheap'
+end as tier_list 
+from film 
+where
+case 
+when rating ='PG' or rating = 'PG-13' or length > '120' then 'Great rating'
+when description like  '%Drama%' and length > '90' then 'long drama'
+when description like  '%Drama%' and length < '90' then 'short drama'
+when rental_rate < 1 then 'very cheap'
+end  is not null
