@@ -92,3 +92,13 @@ select payment.* , first_name , last_name , email
 from payment inner join staff
 on payment.staff_id = staff.staff_id
 where staff.staff_id= 1
+
+
+select * from boarding_passes
+select * from seats
+
+select  fare_conditions,
+count(*)
+from boarding_passes inner join seats
+on boarding_passes.seat_no = seats.seat_no
+group by fare_conditions
