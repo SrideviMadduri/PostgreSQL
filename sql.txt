@@ -102,3 +102,12 @@ count(*)
 from boarding_passes inner join seats
 on boarding_passes.seat_no = seats.seat_no
 group by fare_conditions
+
+--left outer join
+select Right(s.seat_no,1) , 
+count(*) 
+from seats s
+left join boarding_passes b
+on s.seat_no = b.seat_no
+group by Right(s.seat_no,1)
+order by count(*) desc
