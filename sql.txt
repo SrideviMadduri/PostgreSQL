@@ -76,3 +76,19 @@ when description like  '%Drama%' and length > '90' then 'long drama'
 when description like  '%Drama%' and length < '90' then 'short drama'
 when rental_rate < 1 then 'very cheap'
 end  is not null
+
+---Inner Join
+select * from payment 
+select * from customer
+
+select payment_id , payment.customer_id,  staff_id ,
+rental_id, amount, Payment_date , first_name , last_name
+from payment inner join customer
+on payment.customer_id = customer.customer_id
+
+select * from staff
+
+select payment.* , first_name , last_name , email 
+from payment inner join staff
+on payment.staff_id = staff.staff_id
+where staff.staff_id= 1
