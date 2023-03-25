@@ -1,3 +1,9 @@
 1) Where is executed first before Aliases. Cannot use alias names in where clause.
 
 2)In Union duplicates are decoupled that means duplicates are removed for eaxmple same row exists twice one is removed. In union the order should match the column and data type should match.If we want duplicates to be there then we gave to use Union All.
+
+3) How do you filter odd or even in SQL?
+
+SELECT * FROM table_name WHERE mod(column_name,2) = 0; This syntax will find rows where our target column has odd values: SELECT * FROM table_name WHERE mod(column_name,2) <> 0
+
+4) DISTINCT keyword to eliminate duplicates.
