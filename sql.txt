@@ -111,3 +111,39 @@ left join boarding_passes b
 on s.seat_no = b.seat_no
 group by Right(s.seat_no,1)
 order by count(*) desc
+
+--- inner Querry
+
+select * from film 
+select film_id ,title from film 
+where length > (select avg(length) from film )
+
+select * from inventory
+
+select * from film
+where film_id in 
+(select film_id from inventory
+where store_id = 2
+group by film_id
+having count(*)>3)
+
+select * from customer
+select * from payment
+
+select first_name , last_name from customer where customer_id in 
+(select customer_id 
+from payment
+where DATE(payment_date )='2020-01-25')
+
+select * from address
+
+select first_name , last_name
+from customer
+where customer_id in 
+	(Select customer_id 
+	 from payment 
+	 group by customer_id
+	 having sum(amount) > 100)
+And  customer_id in 
+(select customer_id from customer where address_id in 
+(select address_id from address where district = 'California'))
