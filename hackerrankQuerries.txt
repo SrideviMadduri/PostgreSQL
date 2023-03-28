@@ -7,3 +7,14 @@ Query the two cities in STATION with the shortest and longest CITY names, as wel
 (select city, length(city) from  station order by length(city) asc ,city asc ,city limit 1)
 union
 (select city, length(city) from  station order by length(city) desc ,city asc ,city limit 1 );
+
+
+Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+
+select distinct city from station where city not regexp '^[aeiou].*[aeiou]$'
+
+Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.
+
+select  DISTINCT city from station where city not regexp '^[AEIOU]' AND CITY NOT REGEXP '[aeiou]$'
+
+

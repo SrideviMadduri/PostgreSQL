@@ -7,3 +7,5 @@
 SELECT * FROM table_name WHERE mod(column_name,2) = 0; This syntax will find rows where our target column has odd values: SELECT * FROM table_name WHERE mod(column_name,2) <> 0
 
 4) DISTINCT keyword to eliminate duplicates.
+
+5) when we want to filter aggregation like count(*) we always have to use having .
